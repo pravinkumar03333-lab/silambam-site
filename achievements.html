@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Achievements - Silambam</title>
+
+<style>
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+}
+
+header {
+    background: linear-gradient(90deg,#174ea6,#08a9e6);
+    color: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header a {
+    background: white;
+    color: #174ea6;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 1150px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.back {
+    color: #174ea6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+    color: #174ea6;
+    margin: 30px 0;
+}
+
+.box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.10);
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #174ea6;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 20px;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+input,
+select,
+textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: Arial;
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.save {
+    display: block;
+    margin: 25px auto 0;
+    padding: 13px 30px;
+    background: #e0a800;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.save:hover {
+    background: #174ea6;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #174ea6;
+    color: white;
+    padding: 14px;
+}
+
+td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.first {
+    color: #d4a000;
+    font-weight: bold;
+}
+
+.second {
+    color: #777;
+    font-weight: bold;
+}
+
+.third {
+    color: #a65c32;
+    font-weight: bold;
+}
+
+.participation {
+    color: #174ea6;
+    font-weight: bold;
+}
+
+.empty {
+    text-align: center;
+    color: #777;
+    padding: 25px;
+}
+
+footer {
+    text-align: center;
+    color: #777;
+    padding: 30px;
+}
+
+@media(max-width:700px) {
+
+    th,
+    td {
+        font-size: 11px;
+        padding: 7px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+🥋 SILAMBAM ADMIN
+</div>
+
+<a href="/dashboard">
+Dashboard
+</a>
+
+</header>
+
+
+<div class="container">
+
+<a href="/dashboard" class="back">
+← Back to Dashboard
+</a>
+
+
+<h1>
+🏆 Achievements Management
+</h1>
+
+
+<!-- ADD ACHIEVEMENT -->
+
+<div class="box">
+
+<h2>
+➕ Add Student Achievement
+</h2>
+
+
+{% if students %}
+
+<form method="POST"
+      action="/save_achievement">
+
+
+<div class="grid">
+
+
+<div class="group">
+
+<label>
+👨‍🎓 Student
+</label>
+
+<select name="student"
+        required>
+
+<option value="">
+Select Student
+</option>
+
+{% for student in students %}
+
+<option value="{{ student.name }}">
+{{ student.name }}
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+
+<div class="group">
+
+<label>
+🏆 Competition / Event
+</label>
+
+<input type="text"
+       name="event"
+       placeholder="Example: District Silambam Competition"
+       required>
+
+</div>
+
+
+<div class="group">
+
+<label>
+📍 Location
+</label>
+
+<input type="text"
+       name="location"
+       placeholder="Example: Madurai"
+       required>
+
+</div>
+
+
+<div class="group">
+
+<label>
+📅 Date
+</label>
+
+<input type="date"
+       name="date"
+       required>
+
+</div>
+
+
+<div class="group">
+
+<label>
+🥇 Position
+</label>
+
+<select name="position"
+        required>
+
+<option value="">
+Select Position
+</option>
+
+<option value="1st Place">
+🥇 1st Place
+</option>
+
+<option value="2nd Place">
+🥈 2nd Place
+</option>
+
+<option value="3rd Place">
+🥉 3rd Place
+</option>
+
+<option value="Participation">
+🎖️ Participation
+</option>
+
+</select>
+
+</div>
+
+
+<div class="group full">
+
+<label>
+📝 Description
+</label>
+
+<textarea name="description"
+          placeholder="Enter achievement details..."></textarea>
+
+</div>
+
+
+</div>
+
+
+<button class="save"
+        type="submit">
+
+🏆 Save Achievement
+
+</button>
+
+
+</form>
+
+
+{% else %}
+
+<div class="empty">
+
+👨‍🎓 No students available.
+
+<br><br>
+
+Please add students first.
+
+<br><br>
+
+<a href="/students">
+Add Students
+</a>
+
+</div>
+
+{% endif %}
+
+</div>
+
+
+
+<!-- HISTORY -->
+
+<div class="box">
+
+<h2>
+📋 Achievement History
+</h2>
+
+
+{% if achievements %}
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>No.</th>
+<th>Student</th>
+<th>Event</th>
+<th>Location</th>
+<th>Date</th>
+<th>Position</th>
+<th>Description</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+{% for achievement in achievements %}
+
+<tr>
+
+<td>
+{{ loop.index }}
+</td>
+
+<td>
+👤 {{ achievement.student }}
+</td>
+
+<td>
+🏆 {{ achievement.event }}
+</td>
+
+<td>
+📍 {{ achievement.location }}
+</td>
+
+<td>
+{{ achievement.date }}
+</td>
+
+<td>
+
+{% if achievement.position == "1st Place" %}
+
+<span class="first">
+🥇 1st Place
+</span>
+
+{% elif achievement.position == "2nd Place" %}
+
+<span class="second">
+🥈 2nd Place
+</span>
+
+{% elif achievement.position == "3rd Place" %}
+
+<span class="third">
+🥉 3rd Place
+</span>
+
+{% else %}
+
+<span class="participation">
+🎖️ Participation
+</span>
+
+{% endif %}
+
+</td>
+
+<td>
+{{ achievement.description }}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+{% else %}
+
+<div class="empty">
+
+🏆 No achievements recorded yet.
+
+</div>
+
+{% endif %}
+
+
+</div>
+
+
+</div>
+
+
+<footer>
+
+© 2026 Silambam Class Management System
+
+</footer>
+
+
+</body>
+
+</html>

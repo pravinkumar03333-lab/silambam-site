@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Silambam Class Management System</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050505;
+            color: white;
+            overflow-x: hidden;
+        }
+
+
+        /* ================= HEADER ================= */
+
+        header {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            height: 80px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 5%;
+
+            background: rgba(0, 0, 0, 0.45);
+
+            backdrop-filter: blur(8px);
+
+            z-index: 100;
+
+            border-bottom: 1px solid rgba(255, 166, 0, 0.25);
+        }
+
+
+        .logo {
+
+            font-size: 27px;
+
+            font-weight: 900;
+
+            color: #ffae00;
+
+            letter-spacing: 1px;
+        }
+
+
+        nav {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 30px;
+        }
+
+
+        nav a {
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        nav a:hover {
+
+            color: #ffae00;
+        }
+
+
+        .login-button {
+
+            padding: 12px 25px;
+
+            border: 1px solid #ffae00;
+
+            border-radius: 30px;
+
+            color: #ffae00;
+
+            transition: 0.3s;
+        }
+
+
+        .login-button:hover {
+
+            background: #ffae00;
+
+            color: black;
+
+            box-shadow: 0 0 25px rgba(255, 174, 0, 0.5);
+        }
+
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+
+            position: relative;
+
+            min-height: 100vh;
+
+            height: 100vh;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+        }
+
+
+        /* IMAGE */
+
+        .hero-image {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            z-index: 0;
+
+            animation: cinematicZoom 12s ease-in-out infinite alternate;
+        }
+
+
+        /* DARK OVERLAY */
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 1;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,0.82) 0%,
+                    rgba(0,0,0,0.42) 45%,
+                    rgba(0,0,0,0.10) 100%
+                );
+        }
+
+
+        /* BOTTOM DARK EFFECT */
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            height: 35%;
+
+            z-index: 2;
+
+            background:
+
+                linear-gradient(
+                    transparent,
+                    rgba(0,0,0,0.95)
+                );
+
+            pointer-events: none;
+        }
+
+
+
+        /* ================= CINEMATIC ZOOM ================= */
+
+        @keyframes cinematicZoom {
+
+            0% {
+
+                transform:
+                    scale(1.00)
+                    translate(0px, 0px);
+            }
+
+            50% {
+
+                transform:
+                    scale(1.06)
+                    translate(-8px, -5px);
+            }
+
+            100% {
+
+                transform:
+                    scale(1.12)
+                    translate(8px, 4px);
+            }
+        }
+
+
+
+        /* ================= FLOATING EMBERS ================= */
+
+        .embers {
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 3;
+
+            pointer-events: none;
+
+            overflow: hidden;
+        }
+
+
+        .ember {
+
+            position: absolute;
+
+            width: 4px;
+
+            height: 4px;
+
+            background: #ffae00;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 10px #ffae00,
+                0 0 20px #ff5e00;
+
+            animation: emberFloat linear infinite;
+        }
+
+
+        .ember:nth-child(1) {
+
+            left: 65%;
+
+            bottom: 10%;
+
+            animation-duration: 5s;
+        }
+
+
+        .ember:nth-child(2) {
+
+            left: 72%;
+
+            bottom: 15%;
+
+            animation-duration: 7s;
+
+            animation-delay: 1s;
+        }
+
+
+        .ember:nth-child(3) {
+
+            left: 80%;
+
+            bottom: 5%;
+
+            animation-duration: 6s;
+
+            animation-delay: 2s;
+        }
+
+
+        .ember:nth-child(4) {
+
+            left: 58%;
+
+            bottom: 12%;
+
+            animation-duration: 8s;
+
+            animation-delay: 1.5s;
+        }
+
+
+        .ember:nth-child(5) {
+
+            left: 88%;
+
+            bottom: 20%;
+
+            animation-duration: 5.5s;
+
+            animation-delay: 3s;
+        }
+
+
+        .ember:nth-child(6) {
+
+            left: 75%;
+
+            bottom: 8%;
+
+            animation-duration: 9s;
+
+            animation-delay: 2s;
+        }
+
+
+        @keyframes emberFloat {
+
+            0% {
+
+                transform:
+                    translate(0, 0)
+                    scale(0.5);
+
+                opacity: 0;
+            }
+
+            20% {
+
+                opacity: 1;
+            }
+
+            80% {
+
+                opacity: 1;
+            }
+
+            100% {
+
+                transform:
+                    translate(
+                        -80px,
+                        -350px
+                    )
+                    scale(1.2);
+
+                opacity: 0;
+            }
+        }
+
+
+
+        /* ================= HERO CONTENT ================= */
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 5;
+
+            width: 90%;
+
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding-top: 60px;
+        }
+
+
+        .tagline {
+
+            color: #ffae00;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            letter-spacing: 5px;
+
+            margin-bottom: 20px;
+
+            animation: fadeUp 1s ease;
+        }
+
+
+        .hero h1 {
+
+            font-size: clamp(
+                48px,
+                6vw,
+                85px
+            );
+
+            line-height: 0.95;
+
+            text-transform: uppercase;
+
+            margin-bottom: 25px;
+
+            animation: fadeUp 1.3s ease;
+        }
+
+
+        .hero h1 span {
+
+            color: #ffae00;
+
+            display: block;
+
+            font-size: 1.15em;
+        }
+
+
+        .hero-description {
+
+            max-width: 550px;
+
+            color: #eeeeee;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            margin-bottom: 35px;
+
+            animation: fadeUp 1.6s ease;
+        }
+
+
+        /* ================= BUTTONS ================= */
+
+        .buttons {
+
+            display: flex;
+
+            gap: 18px;
+
+            flex-wrap: wrap;
+
+            animation: fadeUp 1.9s ease;
+        }
+
+
+        .btn {
+
+            padding: 15px 30px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .primary {
+
+            background: #ffae00;
+
+            color: #111;
+
+            box-shadow:
+                0 0 20px rgba(
+                    255,
+                    174,
+                    0,
+                    0.25
+                );
+        }
+
+
+        .primary:hover {
+
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 0 35px rgba(
+                    255,
+                    174,
+                    0,
+                    0.6
+                );
+        }
+
+
+        .secondary {
+
+            border: 2px solid white;
+
+            color: white;
+        }
+
+
+        .secondary:hover {
+
+            background: white;
+
+            color: black;
+
+            transform: translateY(-4px);
+        }
+
+
+
+        /* ================= FADE UP ================= */
+
+        @keyframes fadeUp {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(35px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+
+        /* ================= SCROLL ================= */
+
+        .scroll {
+
+            position: absolute;
+
+            bottom: 25px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            z-index: 10;
+
+            text-align: center;
+
+            color: #ffae00;
+
+            font-size: 13px;
+
+            letter-spacing: 4px;
+
+            animation: scrollBounce 2s infinite;
+        }
+
+
+        .scroll span {
+
+            display: block;
+
+            font-size: 25px;
+
+            margin-top: 8px;
+        }
+
+
+        @keyframes scrollBounce {
+
+            0%,
+            100% {
+
+                transform:
+                    translate(-50%, 0);
+            }
+
+            50% {
+
+                transform:
+                    translate(-50%, 10px);
+            }
+        }
+
+
+
+        /* ================= FEATURES ================= */
+
+        .features {
+
+            position: relative;
+
+            padding: 100px 7%;
+
+            background: #090909;
+
+            text-align: center;
+        }
+
+
+        .section-title {
+
+            font-size: 42px;
+
+            color: #ffae00;
+
+            margin-bottom: 15px;
+        }
+
+
+        .section-subtitle {
+
+            color: #aaa;
+
+            margin-bottom: 50px;
+        }
+
+
+        .feature-grid {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 25px;
+        }
+
+
+        .card {
+
+            background: #151515;
+
+            border: 1px solid #292929;
+
+            padding: 35px 20px;
+
+            border-radius: 15px;
+
+            transition: 0.3s;
+        }
+
+
+        .card:hover {
+
+            transform:
+                translateY(-10px);
+
+            border-color: #ffae00;
+
+            box-shadow:
+                0 10px 35px
+                rgba(255,174,0,0.12);
+        }
+
+
+        .card-icon {
+
+            font-size: 45px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .card h3 {
+
+            margin-bottom: 12px;
+        }
+
+
+        .card p {
+
+            color: #aaa;
+
+            line-height: 1.6;
+        }
+
+
+
+        /* ================= ABOUT ================= */
+
+        .about {
+
+            padding: 100px 10%;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #190500,
+                    #050505
+                );
+
+            text-align: center;
+        }
+
+
+        .about p {
+
+            max-width: 850px;
+
+            margin: auto;
+
+            color: #ccc;
+
+            font-size: 18px;
+
+            line-height: 1.9;
+        }
+
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+
+            background: #000;
+
+            padding: 25px;
+
+            text-align: center;
+
+            color: #777;
+        }
+
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 900px) {
+
+            header {
+
+                height: 70px;
+
+                padding: 0 4%;
+            }
+
+
+            .logo {
+
+                font-size: 21px;
+            }
+
+
+            nav {
+
+                gap: 8px;
+            }
+
+
+            nav a:not(.login-button) {
+
+                display: none;
+            }
+
+
+            .login-button {
+
+                padding: 9px 15px;
+
+                font-size: 13px;
+            }
+
+
+            .hero {
+
+                min-height: 750px;
+
+                height: 100vh;
+            }
+
+
+            .hero-image {
+
+                object-position: 60% center;
+
+                animation:
+                    cinematicZoomMobile
+                    12s
+                    ease-in-out
+                    infinite
+                    alternate;
+            }
+
+
+            @keyframes cinematicZoomMobile {
+
+                0% {
+
+                    transform: scale(1.05);
+                }
+
+                100% {
+
+                    transform: scale(1.15);
+                }
+            }
+
+
+            .hero-content {
+
+                text-align: center;
+
+                padding-top: 90px;
+            }
+
+
+            .tagline {
+
+                font-size: 13px;
+
+                letter-spacing: 3px;
+            }
+
+
+            .hero h1 {
+
+                font-size: 46px;
+            }
+
+
+            .hero-description {
+
+                font-size: 16px;
+
+                margin-left: auto;
+
+                margin-right: auto;
+            }
+
+
+            .buttons {
+
+                justify-content: center;
+            }
+
+
+            .feature-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            .hero {
+
+                min-height: 720px;
+            }
+
+
+            .hero-image {
+
+                object-position: 62% center;
+            }
+
+
+            .hero h1 {
+
+                font-size: 40px;
+            }
+
+
+            .hero-description {
+
+                font-size: 15px;
+            }
+
+
+            .feature-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .section-title {
+
+                font-size: 32px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="logo">
+
+        🥋 SILAMBAM
+
+    </div>
+
+
+    <nav>
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="#features">
+            Features
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="/login"
+           class="login-button">
+
+            🔐 Admin Login
+
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+
+    <!-- YOUR SILAMBAM IMAGE -->
+
+    <img
+        src="{{ url_for('static', filename='silambam-hero.png') }}"
+        class="hero-image"
+        alt="Silambam Warrior">
+
+
+    <!-- FLOATING FIRE EMBERS -->
+
+    <div class="embers">
+
+        <div class="ember"></div>
+
+        <div class="ember"></div>
+
+        <div class="ember"></div>
+
+        <div class="ember"></div>
+
+        <div class="ember"></div>
+
+        <div class="ember"></div>
+
+    </div>
+
+
+
+    <!-- HERO CONTENT -->
+
+    <div class="hero-content">
+
+        <div class="tagline">
+
+            TRADITION • DISCIPLINE • POWER
+
+        </div>
+
+
+        <h1>
+
+            MASTER THE ART OF
+
+            <span>
+                SILAMBAM
+            </span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            Silambam is not just a martial art.
+            It's a way of life. Build strength,
+            focus and confidence.
+
+        </p>
+
+
+        <div class="buttons">
+
+            <a href="/login"
+               class="btn primary">
+
+                🔐 Admin Login
+
+            </a>
+
+
+            <a href="#features"
+               class="btn secondary">
+
+                Explore Features
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- SCROLL -->
+
+    <div class="scroll">
+
+        SCROLL DOWN
+
+        <span>
+            ↓
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FEATURES ================= -->
+
+<section
+    class="features"
+    id="features">
+
+
+    <h2 class="section-title">
+
+        Management System
+
+    </h2>
+
+
+    <p class="section-subtitle">
+
+        Manage your complete Silambam class
+        from one place.
+
+    </p>
+
+
+    <div class="feature-grid">
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                👨‍🎓
+            </div>
+
+            <h3>
+                Students
+            </h3>
+
+            <p>
+                Add and manage all
+                student details easily.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                📅
+            </div>
+
+            <h3>
+                Attendance
+            </h3>
+
+            <p>
+                Mark daily attendance
+                and view records.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                💰
+            </div>
+
+            <h3>
+                Fees
+            </h3>
+
+            <p>
+                Track fees collection
+                and pending payments.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🏆
+            </div>
+
+            <h3>
+                Achievements
+            </h3>
+
+            <p>
+                Record awards,
+                competitions and achievements.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ABOUT ================= -->
+
+<section
+    class="about"
+    id="about">
+
+
+    <h2 class="section-title">
+
+        🥋 About Silambam
+
+    </h2>
+
+
+    <p>
+
+        Silambam is a traditional Tamil martial art
+        that develops discipline, balance, speed,
+        focus and confidence. Our management system
+        makes it easy for trainers to manage students,
+        attendance, fees and achievements.
+
+    </p>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 Silambam Class Management System
+    | All Rights Reserved
+
+</footer>
+
+
+</body>
+
+</html>

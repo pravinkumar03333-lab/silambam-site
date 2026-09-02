@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Students - Silambam</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef6ff,
+                    #f8fbff
+                );
+
+            color: #222;
+        }
+
+
+        /* HEADER */
+
+        header {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #174ea6,
+                    #08a9e6
+                );
+
+            color: white;
+
+            padding: 18px 6%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0,0,0,0.15);
+        }
+
+
+        .logo {
+
+            font-size: 25px;
+
+            font-weight: bold;
+        }
+
+
+        .header-links {
+
+            display: flex;
+
+            gap: 10px;
+        }
+
+
+        .header-links a {
+
+            text-decoration: none;
+
+            color: #174ea6;
+
+            background: white;
+
+            padding: 10px 18px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+        }
+
+
+        /* MAIN */
+
+        .container {
+
+            width: 94%;
+
+            max-width: 1300px;
+
+            margin: 30px auto;
+        }
+
+
+        .back {
+
+            text-decoration: none;
+
+            color: #174ea6;
+
+            font-weight: bold;
+
+            display: inline-block;
+
+            margin-bottom: 15px;
+        }
+
+
+        h1 {
+
+            color: #174ea6;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* STAT CARDS */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .stat-card {
+
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.08);
+
+            border-left: 6px solid #08a9e6;
+        }
+
+
+        .stat-card h3 {
+
+            margin: 0;
+
+            color: #666;
+
+            font-size: 15px;
+        }
+
+
+        .stat-card strong {
+
+            display: block;
+
+            font-size: 32px;
+
+            color: #174ea6;
+
+            margin-top: 8px;
+        }
+
+
+        /* FORM */
+
+        .form-box {
+
+            background: white;
+
+            padding: 28px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.08);
+
+            margin-bottom: 25px;
+        }
+
+
+        .form-box h2 {
+
+            margin-top: 0;
+
+            color: #174ea6;
+        }
+
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .field {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 6px;
+        }
+
+
+        .field label {
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            color: #555;
+        }
+
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #d5dce5;
+
+            border-radius: 9px;
+
+            font-size: 14px;
+
+            outline: none;
+        }
+
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+
+            border-color: #08a9e6;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(8,169,230,0.12);
+        }
+
+
+        textarea {
+
+            resize: vertical;
+
+            min-height: 80px;
+        }
+
+
+        .full {
+
+            grid-column: 1 / -1;
+        }
+
+
+        .add-button {
+
+            margin-top: 20px;
+
+            padding: 13px 28px;
+
+            border: none;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #174ea6,
+                    #08a9e6
+                );
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .add-button:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 5px 15px
+                rgba(23,78,166,0.3);
+        }
+
+
+        /* SEARCH */
+
+        .search-box {
+
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 16px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.08);
+
+            margin-bottom: 25px;
+        }
+
+
+        .search-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr 1fr auto;
+
+            gap: 12px;
+        }
+
+
+        .search-button {
+
+            border: none;
+
+            background: #174ea6;
+
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 9px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .clear-button {
+
+            background: #eee;
+
+            color: #333;
+
+            text-decoration: none;
+
+            padding: 12px 20px;
+
+            border-radius: 9px;
+
+            font-weight: bold;
+        }
+
+
+        /* TABLE */
+
+        .table-box {
+
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.08);
+
+            overflow-x: auto;
+        }
+
+
+        table {
+
+            width: 100%;
+
+            min-width: 1100px;
+
+            border-collapse: collapse;
+        }
+
+
+        th {
+
+            background: #174ea6;
+
+            color: white;
+
+            padding: 13px;
+
+            text-align: center;
+
+            white-space: nowrap;
+        }
+
+
+        td {
+
+            padding: 12px;
+
+            text-align: center;
+
+            border-bottom: 1px solid #edf0f4;
+
+            white-space: nowrap;
+        }
+
+
+        tr:hover {
+
+            background: #f2f9ff;
+        }
+
+
+        .student-id {
+
+            color: #174ea6;
+
+            font-weight: bold;
+        }
+
+
+        .belt {
+
+            display: inline-block;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            background: #eaf5ff;
+
+            color: #174ea6;
+
+            font-weight: bold;
+
+            font-size: 12px;
+        }
+
+
+        .paid {
+
+            color: #168a45;
+
+            background: #e5f8ed;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            font-weight: bold;
+        }
+
+
+        .pending {
+
+            color: #b45309;
+
+            background: #fff3d6;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            font-weight: bold;
+        }
+
+
+        .edit {
+
+            background: #08a9e6;
+
+            color: white;
+
+            border: none;
+
+            padding: 7px 12px;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+
+        .delete {
+
+            background: #dc3545;
+
+            color: white;
+
+            border: none;
+
+            padding: 7px 12px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+
+        .empty {
+
+            padding: 35px;
+
+            color: #777;
+        }
+
+
+        footer {
+
+            text-align: center;
+
+            color: #777;
+
+            padding: 30px;
+        }
+
+
+        /* MOBILE */
+
+        @media(max-width: 900px) {
+
+            .stats {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .form-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .search-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            header {
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        SILAMBAM ADMIN
+    </div>
+
+
+    <div class="header-links">
+
+        <a href="/dashboard">
+            Dashboard
+        </a>
+
+        <a href="/logout">
+            Logout
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<div class="container">
+
+
+    <a href="/dashboard" class="back">
+        &lt; Back to Dashboard
+    </a>
+
+
+    <h1>
+        Student Management
+    </h1>
+
+
+
+    <!-- STATISTICS -->
+
+    <div class="stats">
+
+
+        <div class="stat-card">
+
+            <h3>
+                Total Students
+            </h3>
+
+            <strong>
+                {{ total_students }}
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>
+                Fees Paid
+            </h3>
+
+            <strong>
+                {{ paid_count }}
+            </strong>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>
+                Fees Pending
+            </h3>
+
+            <strong>
+                {{ pending_count }}
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ADD STUDENT -->
+
+    <div class="form-box">
+
+        <h2>
+            Add New Student
+        </h2>
+
+
+        <form
+            method="POST"
+            action="/add_student">
+
+
+            <div class="form-grid">
+
+
+                <div class="field">
+
+                    <label>
+                        Student Name *
+                    </label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter student name"
+                        required>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Age
+                    </label>
+
+                    <input
+                        type="number"
+                        name="age"
+                        min="5"
+                        max="100"
+                        placeholder="Age">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Gender
+                    </label>
+
+                    <select name="gender">
+
+                        <option value="">
+                            Select Gender
+                        </option>
+
+                        <option value="Male">
+                            Male
+                        </option>
+
+                        <option value="Female">
+                            Female
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Parent / Guardian
+                    </label>
+
+                    <input
+                        type="text"
+                        name="parent_name"
+                        placeholder="Parent name">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Parent Phone
+                    </label>
+
+                    <input
+                        type="tel"
+                        name="parent_phone"
+                        placeholder="Parent phone">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Student Phone
+                    </label>
+
+                    <input
+                        type="tel"
+                        name="phone"
+                        placeholder="Student phone">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Belt / Level
+                    </label>
+
+                    <select name="belt">
+
+                        <option value="">
+                            Select Level
+                        </option>
+
+                        <option value="Beginner">
+                            Beginner
+                        </option>
+
+                        <option value="Yellow Belt">
+                            Yellow Belt
+                        </option>
+
+                        <option value="Green Belt">
+                            Green Belt
+                        </option>
+
+                        <option value="Blue Belt">
+                            Blue Belt
+                        </option>
+
+                        <option value="Red Belt">
+                            Red Belt
+                        </option>
+
+                        <option value="Black Belt">
+                            Black Belt
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Training Batch
+                    </label>
+
+                    <select name="batch">
+
+                        <option value="">
+                            Select Batch
+                        </option>
+
+                        <option value="Morning">
+                            Morning
+                        </option>
+
+                        <option value="Evening">
+                            Evening
+                        </option>
+
+                        <option value="Weekend">
+                            Weekend
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Joining Date
+                    </label>
+
+                    <input
+                        type="date"
+                        name="join_date">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Monthly Fee
+                    </label>
+
+                    <input
+                        type="number"
+                        name="monthly_fee"
+                        min="0"
+                        step="0.01"
+                        placeholder="0">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Fee Status
+                    </label>
+
+                    <select name="fee_status">
+
+                        <option value="Pending">
+                            Pending
+                        </option>
+
+                        <option value="Paid">
+                            Paid
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Attendance %
+                    </label>
+
+                    <input
+                        type="number"
+                        name="attendance"
+                        min="0"
+                        max="100"
+                        step="0.1"
+                        value="0">
+
+                </div>
+
+
+                <div class="field full">
+
+                    <label>
+                        Address
+                    </label>
+
+                    <textarea
+                        name="address"
+                        placeholder="Enter student address"></textarea>
+
+                </div>
+
+
+                <div class="field full">
+
+                    <label>
+                        Achievements
+                    </label>
+
+                    <textarea
+                        name="achievements"
+                        placeholder="Example: District Champion, Gold Medal, State Level Participant"></textarea>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="add-button">
+
+                Add Student
+
+            </button>
+
+
+        </form>
+
+    </div>
+
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <form method="GET"
+              action="/students">
+
+
+            <div class="search-grid">
+
+
+                <input
+                    type="text"
+                    name="search"
+                    value="{{ search }}"
+                    placeholder="Search name, ID or phone...">
+
+
+                <select name="belt">
+
+                    <option value="">
+                        All Belt Levels
+                    </option>
+
+                    <option value="Beginner"
+                        {% if selected_belt == "Beginner" %}selected{% endif %}>
+                        Beginner
+                    </option>
+
+                    <option value="Yellow Belt"
+                        {% if selected_belt == "Yellow Belt" %}selected{% endif %}>
+                        Yellow Belt
+                    </option>
+
+                    <option value="Green Belt"
+                        {% if selected_belt == "Green Belt" %}selected{% endif %}>
+                        Green Belt
+                    </option>
+
+                    <option value="Blue Belt"
+                        {% if selected_belt == "Blue Belt" %}selected{% endif %}>
+                        Blue Belt
+                    </option>
+
+                    <option value="Red Belt"
+                        {% if selected_belt == "Red Belt" %}selected{% endif %}>
+                        Red Belt
+                    </option>
+
+                    <option value="Black Belt"
+                        {% if selected_belt == "Black Belt" %}selected{% endif %}>
+                        Black Belt
+                    </option>
+
+                </select>
+
+
+                <select name="fee_status">
+
+                    <option value="">
+                        All Fee Status
+                    </option>
+
+                    <option value="Paid"
+                        {% if selected_fee_status == "Paid" %}selected{% endif %}>
+                        Paid
+                    </option>
+
+                    <option value="Pending"
+                        {% if selected_fee_status == "Pending" %}selected{% endif %}>
+                        Pending
+                    </option>
+
+                </select>
+
+
+                <button
+                    type="submit"
+                    class="search-button">
+
+                    Search
+
+                </button>
+
+
+                <a
+                    href="/students"
+                    class="clear-button">
+
+                    Clear
+
+                </a>
+
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+
+    <!-- STUDENT TABLE -->
+
+    <div class="table-box">
+
+        <h2>
+            Student List
+        </h2>
+
+
+        <table>
+
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        No.
+                    </th>
+
+                    <th>
+                        Student ID
+                    </th>
+
+                    <th>
+                        Name
+                    </th>
+
+                    <th>
+                        Age
+                    </th>
+
+                    <th>
+                        Parent
+                    </th>
+
+                    <th>
+                        Phone
+                    </th>
+
+                    <th>
+                        Belt
+                    </th>
+
+                    <th>
+                        Batch
+                    </th>
+
+                    <th>
+                        Fee
+                    </th>
+
+                    <th>
+                        Attendance
+                    </th>
+
+                    <th>
+                        Achievements
+                    </th>
+
+                    <th>
+                        Actions
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                {% for student in students %}
+
+                <tr>
+
+
+                    <td>
+                        {{ loop.index }}
+                    </td>
+
+
+                    <td class="student-id">
+                        {{ student.student_id }}
+                    </td>
+
+
+                    <td>
+                        {{ student.name }}
+                    </td>
+
+
+                    <td>
+                        {{ student.age or "-" }}
+                    </td>
+
+
+                    <td>
+                        {{ student.parent_name or "-" }}
+                    </td>
+
+
+                    <td>
+                        {{ student.phone or student.parent_phone or "-" }}
+                    </td>
+
+
+                    <td>
+
+                        <span class="belt">
+                            {{ student.belt or "Not Set" }}
+                        </span>
+
+                    </td>
+
+
+                    <td>
+                        {{ student.batch or "-" }}
+                    </td>
+
+
+                    <td>
+
+                        {% if student.fee_status == "Paid" %}
+
+                        <span class="paid">
+                            Paid
+                        </span>
+
+                        {% else %}
+
+                        <span class="pending">
+                            Pending
+                        </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <td>
+                        {{ student.attendance }}%
+                    </td>
+
+
+                    <td>
+                        {{ student.achievements or "-" }}
+                    </td>
+
+
+                    <td>
+
+
+                        <a
+                            href="/edit_student/{{ student.id }}"
+                            class="edit">
+
+                            Edit
+
+                        </a>
+
+
+                        <form
+                            method="POST"
+                            action="/delete_student/{{ student.id }}"
+                            style="display:inline;"
+                            onsubmit="return confirm('Delete this student?');">
+
+                            <button
+                                type="submit"
+                                class="delete">
+
+                                Delete
+
+                            </button>
+
+                        </form>
+
+
+                    </td>
+
+
+                </tr>
+
+
+                {% else %}
+
+
+                <tr>
+
+                    <td
+                        colspan="12"
+                        class="empty">
+
+                        No students found.
+
+                    </td>
+
+                </tr>
+
+
+                {% endfor %}
+
+
+            </tbody>
+
+
+        </table>
+
+    </div>
+
+
+</div>
+
+
+
+<footer>
+
+    Silambam Class Management System
+    | Admin Panel
+
+</footer>
+
+
+</body>
+
+</html>

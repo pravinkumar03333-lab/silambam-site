@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance Management - Silambam</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f4f4;
+            color: #222;
+        }
+
+        /* HEADER */
+        header {
+            background: #111;
+            min-height: 75px;
+            padding: 0 5%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            color: #ffd700;
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: #ffd700;
+            color: #111;
+        }
+
+        .logout {
+            background: #e94560;
+            font-weight: bold;
+        }
+
+        .logout:hover {
+            background: #c8233d !important;
+            color: white !important;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            width: 94%;
+            max-width: 1200px;
+            margin: 35px auto;
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            background: linear-gradient(135deg, #111, #3b2100);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .page-header h1 {
+            color: #ffd700;
+            margin-bottom: 8px;
+            font-size: 30px;
+        }
+
+        .page-header p {
+            color: #ddd;
+            line-height: 1.5;
+        }
+
+        /* MESSAGE */
+        .message {
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        /* DATE */
+        .date-card {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+        }
+
+        .date-card label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .date-card input {
+            width: 100%;
+            max-width: 300px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 16px;
+        }
+
+        /* SUMMARY */
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .summary-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+        }
+
+        .summary-icon {
+            font-size: 28px;
+            margin-bottom: 7px;
+        }
+
+        .summary-count {
+            font-size: 25
